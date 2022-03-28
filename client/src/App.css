@@ -34,8 +34,8 @@ body {
 }
 
 .search input {
-  /*TOFIX LETTER CUT*/
   flex: 1;
+  width: 80%;
   margin: 0 0 0px;
   border: none;
   padding: 1rem 2rem;
@@ -43,7 +43,7 @@ body {
   outline: none;
   color: #fff6a4;
   background: #9c5200;
-
+  text-indent: 10px;
   font-family: var(--font-family);
   letter-spacing: 5px;
   font-size: 25px;
@@ -55,7 +55,6 @@ body {
 }
 
 .search img {
-  /*TOFIX WHEN STRETCHED WINDOW*/
   justify-content: right;
   width: 35px;
   height: 35px;
