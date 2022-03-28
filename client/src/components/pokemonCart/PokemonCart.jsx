@@ -5,7 +5,7 @@ const PokemonCart = (pokemon) => {
     return (
     <div className="pokemon__cart">
         <div>
-            <p>{pokemon.name}</p>
+            <p>{pokemon.pokemon.name}</p>
         </div>
 
         <div>

@@ -1,13 +1,14 @@
 body {
   height: 100%;
-  background: linear-gradient(90deg, #de9400 0%, #f6bd20 50%, #de9400 99%);
+  background: linear-gradient(90deg, #ca8700 0%, #f8ca4b 50%, #ca8700 99%);
 }
 
 .app h1 {
   font-family: var(--font-family);
   font-size: 60px;
+  -webkit-text-stroke: 3px #2468b1;
   letter-spacing: 2px;
-  color: #c52018;
+  color: #fccf00;
 
   width: fit-content;
 }

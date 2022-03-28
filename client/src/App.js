@@ -7,7 +7,7 @@ import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
 
 const App = () => {
-  const [pokemon, setPokemon] = useState({});
+  const [pokemon, setPokemon] = useState();
   const [searchTerm, setSearchTerm] = useState("Pikachu");
 
   const searchPokemon = async (name) => {
@@ -17,7 +17,7 @@ const App = () => {
         console.log(response);
       })
       .catch((error) => {
-        console.log("There was an ERROR: ", error);
+        //console.log("There was an ERROR: ", error);
         setPokemon(null);
       });
   };
@@ -38,7 +38,7 @@ const App = () => {
         />
       </div>
 
-      {pokemon != null ? (
+      {pokemon != null && pokemon !== undefined ? (
         <div className="container">
           <PokemonCart pokemon={pokemon} />
         </div>
