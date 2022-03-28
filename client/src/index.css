@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Pokemon";
+  src: url("./assets/fonts/Pokemon\ Solid.ttf") format("truetype");
+}
+
+:root {
+  --font-family: "Pokemon";
+}
