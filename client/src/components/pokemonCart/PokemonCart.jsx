@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import ReactDOM from "react-dom"
+import React, { useState, useRef } from 'react'
 import "./pokemonCart.css"
 import {
     cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart
 } from "./import"
 
 const PokemonCart = (pokemon) => {
-    const [actualCart, setActualCart] = useState([cart1,0]);
+    const [actualCart, setActualCart] = useState([cart1, 0]);
+    const visibleHeart = useRef();
 
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
 
@@ -31,13 +31,14 @@ const PokemonCart = (pokemon) => {
     }
 
     function heartPopUp() {
-        const node = ReactDOM.findDOMNode(this);
-        console.log(node);
-        // Get child nodes
-        if (node instanceof HTMLElement) {
-            const heartNode = node.querySelector('#heart');
-            console.log(heartNode);
-        }
+        console.log(visibleHeart.current);
+        let el = visibleHeart.current;
+        el.style.display = "block";
+        el.className = "fade-out";
+        setTimeout(function () { 
+        el.style.display = "none";
+        el.className = "fade-in";
+         }, 1000);
     }
 
     return (
@@ -54,7 +55,7 @@ const PokemonCart = (pokemon) => {
             </div>
 
             <div className='heart'>
-                <img className='fade-in' src={heart} id="heart" alt="heart"/>
+                <img className='fade-in' ref={visibleHeart} src={heart} id="heart" alt="heart"/>
             </div>
             <div className='pokemon'>
                 <img onClick={() => heartPopUp()} src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />

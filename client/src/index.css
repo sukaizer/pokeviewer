@@ -8,6 +8,11 @@
   src: url("./assets/fonts/Minecraft.ttf");
 }
 
+:root {
+  --font-family: Pokemon;
+  --font-pixel: Pixel;
+}
+
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0;
@@ -25,7 +30,19 @@
   }
 }
 
-:root {
-  --font-family: Pokemon;
-  --font-pixel: Pixel;
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
