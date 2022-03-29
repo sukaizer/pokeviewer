@@ -23,6 +23,13 @@ const App = () => {
       });
   };
 
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.key === "Enter") {
+      searchPokemon(searchTerm);
+    }
+  };
+
   return (
     <div className="app padding">
       <div className="container">
@@ -32,6 +39,7 @@ const App = () => {
             placeholder="Enter the Pokémon or their number"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={handleKeypress}
           />
           <img
             src={search}

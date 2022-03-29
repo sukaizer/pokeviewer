@@ -33,15 +33,18 @@ const PokemonCart = (pokemon) => {
     }
 
     return (
-        <div className="pokemon__cart">
+        <div className="pokemon__cart">    
             <img className="cart" src={actualCart[0]} alt={cart2} />
             <div className='wrapper__left' onClick={() => previousCart()}>
                 <img className='arrow__left' src={arrow} alt="left" />   
             </div>
-             
             <div className='wrapper__right' onClick={() => nextCart()}>
                 <img className='arrow__right' src={arrow} alt="right" />
             </div>
+            <div className='description'>
+                {pokemon.pokemon.name + " #" + pokemon.pokemon.id.toString()}
+            </div>
+
 
             <div className='pokemon'>
                 <img src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />

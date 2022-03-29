@@ -1,8 +1,14 @@
 @font-face {
-  font-family: "Pokemon";
+  font-family: Pokemon;
   src: url("./assets/fonts/Pokemon\ Solid.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: Pixel;
+  src: url("./assets/fonts/Minecraft.ttf");
+}
+
 :root {
-  --font-family: "Pokemon";
+  --font-family: Pokemon;
+  --font-pixel: Pixel;
 }

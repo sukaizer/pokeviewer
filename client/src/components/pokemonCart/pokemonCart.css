@@ -56,3 +56,11 @@
 .pokemon img {
   display: block;
 }
+
+.description {
+  background-color: transparent;
+  font-family: Pixel;
+  position: absolute;
+  top: 70px;
+  left: 85px;
+}

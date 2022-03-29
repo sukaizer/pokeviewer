@@ -75,6 +75,6 @@ body {
   border-bottom-right-radius: 3rem;
 }
 
-.test img {
-  width: 50%;
+.empty {
+  font-family: var(--font-family);
 }
