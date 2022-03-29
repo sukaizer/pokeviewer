@@ -31,6 +31,7 @@ const PokemonCart = (pokemon) => {
     }
 
     function heartPopUp() {
+        //TODO prendre en compte la taille du sprite pour les pokemons "grands"
         console.log(visibleHeart.current);
         let el = visibleHeart.current;
         el.style.display = "block";
@@ -40,6 +41,7 @@ const PokemonCart = (pokemon) => {
         el.className = "fade-in";
          }, 1000);
     }
+
 
     return (
         <div className="pokemon__cart">    

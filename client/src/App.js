@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import PokemonCart from "./components/pokemonCart/PokemonCart";
-import cart from "./assets/carts/cart1.png";
 
 import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
@@ -10,18 +9,33 @@ const P = new Pokedex();
 const App = () => {
   const [pokemon, setPokemon] = useState();
   const [searchTerm, setSearchTerm] = useState("Pikachu");
+  const [pokemonList, setPokemonList] = useState([]);
 
   const searchPokemon = async (name) => {
     P.getPokemonByName(name.toLowerCase()) // with Promise
       .then((response) => {
         setPokemon(response);
-        console.log(response);
+        isElementIn(response, pokemonList)
+          ? console.log("pokemon already here")
+          : setPokemonList((prevArray) => [...prevArray, response]);
+        //setPokemonList((prevArray) => [...prevArray, response]);
+        //console.log(response);
       })
       .catch((error) => {
         //console.log("There was an ERROR: ", error);
         setPokemon(null);
       });
   };
+
+  function isElementIn(element, array) {
+    let b = false;
+    array.forEach((e) => {
+      if (element.name === e.name) {
+        b = true;
+      }
+    });
+    return b;
+  }
 
   const handleKeypress = (e) => {
     //it triggers by pressing the enter key
@@ -48,16 +62,12 @@ const App = () => {
           />
         </div>
       </div>
-
-      {pokemon != null && pokemon !== undefined ? (
-        <div className="content">
-          <PokemonCart pokemon={pokemon} />
-        </div>
-      ) : (
-        <div className="empty">
-          <h2>No Pokemon :/</h2>
-        </div>
-      )}
+      {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
+      <div className="content">
+        {pokemonList.map((p) => (
+          <PokemonCart pokemon={p} key={p.name} />
+        ))}
+      </div>
     </div>
   );
 };

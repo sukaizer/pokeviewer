@@ -78,3 +78,12 @@ body {
 .empty {
   font-family: var(--font-family);
 }
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
