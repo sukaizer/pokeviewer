@@ -15,3 +15,4 @@ export { default as cart14 } from "../../assets/carts/cart14.png";
 export { default as cart15 } from "../../assets/carts/cart15.png";
 export { default as cart16 } from "../../assets/carts/cart16.png";
 export { default as arrow } from "../../assets/carts/pointer.png";
+export { default as heart } from "../../assets/icons/heart.png";

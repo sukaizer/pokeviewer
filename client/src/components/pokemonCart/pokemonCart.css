@@ -57,6 +57,27 @@
   display: block;
 }
 
+.pokemon img:hover {
+  transform: scale(1.3) ;
+}
+
+.heart {
+  position: absolute;
+  top: 155px;
+  left: 215px;
+  float:left;
+}
+
+.heart img{
+  width: 8%;
+  display: none;
+}
+
+.fade-in {
+	-webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
 .description {
   background-color: transparent;
   font-family: Pixel;

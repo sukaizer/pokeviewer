@@ -1,11 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import ReactDOM from "react-dom"
 import "./pokemonCart.css"
-
 import {
-    cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow
+    cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart
 } from "./import"
-
-
 
 const PokemonCart = (pokemon) => {
     const [actualCart, setActualCart] = useState([cart1,0]);
@@ -32,6 +30,16 @@ const PokemonCart = (pokemon) => {
         console.log(actualCart[1]);
     }
 
+    function heartPopUp() {
+        const node = ReactDOM.findDOMNode(this);
+        console.log(node);
+        // Get child nodes
+        if (node instanceof HTMLElement) {
+            const heartNode = node.querySelector('#heart');
+            console.log(heartNode);
+        }
+    }
+
     return (
         <div className="pokemon__cart">    
             <img className="cart" src={actualCart[0]} alt={cart2} />
@@ -45,11 +53,12 @@ const PokemonCart = (pokemon) => {
                 {pokemon.pokemon.name + " #" + pokemon.pokemon.id.toString()}
             </div>
 
-
-            <div className='pokemon'>
-                <img src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />
+            <div className='heart'>
+                <img className='fade-in' src={heart} id="heart" alt="heart"/>
             </div>
-            
+            <div className='pokemon'>
+                <img onClick={() => heartPopUp()} src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />
+            </div>
         </div>
     );
 }
