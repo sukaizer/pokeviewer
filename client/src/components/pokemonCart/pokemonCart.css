@@ -95,3 +95,17 @@
   top: 70px;
   left: 85px;
 }
+
+@media screen and (max-width: 625px) {
+  .pokemon {
+    min-width: 96px;
+  }
+
+  .cart {
+    min-width: 315px;
+  }
+
+  .pokemon__cart {
+    min-width: 450px;
+  }
+}

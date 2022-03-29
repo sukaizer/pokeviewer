@@ -58,6 +58,7 @@ const PokemonCart = (pokemon) => {
             </div>
             <div className='description'>
                 {pokemon.pokemon.name + " #" + pokemon.pokemon.id.toString()}
+            
             </div>
 
             <div className='heart'>

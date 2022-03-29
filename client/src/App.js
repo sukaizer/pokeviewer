@@ -7,23 +7,19 @@ import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
 
 const App = () => {
-  const [pokemon, setPokemon] = useState();
   const [searchTerm, setSearchTerm] = useState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
 
   const searchPokemon = async (name) => {
     P.getPokemonByName(name.toLowerCase()) // with Promise
       .then((response) => {
-        setPokemon(response);
         isElementIn(response, pokemonList)
           ? console.log("pokemon already here")
           : setPokemonList((prevArray) => [...prevArray, response]);
-        //setPokemonList((prevArray) => [...prevArray, response]);
-        //console.log(response);
+        console.log(response);
       })
       .catch((error) => {
-        //console.log("There was an ERROR: ", error);
-        setPokemon(null);
+        console.log("There was an ERROR: ", error);
       });
   };
 
@@ -65,7 +61,7 @@ const App = () => {
       {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
       <div className="content">
         {pokemonList.map((p) => (
-          <PokemonCart pokemon={p} key={p.name} />
+          <PokemonCart pokemon={p} key={p.id} />
         ))}
       </div>
     </div>
