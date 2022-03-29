@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import PokemonCart from "./components/pokemonCart/PokemonCart";
+import cart from "./assets/carts/cart1.png";
 
 import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
@@ -24,22 +25,24 @@ const App = () => {
 
   return (
     <div className="app padding">
-      <h1>PokéWeb</h1>
-      <div className="search">
-        <input
-          placeholder="Enter the Pokémon or their number"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <img
-          src={search}
-          alt="search"
-          onClick={() => searchPokemon(searchTerm)}
-        />
+      <div className="container">
+        <h1>PokéWeb</h1>
+        <div className="search">
+          <input
+            placeholder="Enter the Pokémon or their number"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <img
+            src={search}
+            alt="search"
+            onClick={() => searchPokemon(searchTerm)}
+          />
+        </div>
       </div>
 
       {pokemon != null && pokemon !== undefined ? (
-        <div className="container">
+        <div className="content">
           <PokemonCart pokemon={pokemon} />
         </div>
       ) : (
