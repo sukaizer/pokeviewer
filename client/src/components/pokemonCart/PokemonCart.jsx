@@ -11,7 +11,8 @@ const PokemonCart = (pokemon) => {
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
     
     const randomNb =  Math.floor(Math.random() * 15);
-    const [actualCart, setActualCart] = useState([carts[randomNb], 0]);
+    const [actualCart, setActualCart] = useState([carts[randomNb], randomNb]);
+
 
     function previousCart() {
         if (actualCart[1] > 0) {
