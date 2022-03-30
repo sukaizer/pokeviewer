@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import PokemonCart from "./components/pokemonCart/PokemonCart";
+import Cursor from "./Cursor";
 
 import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
@@ -42,6 +43,7 @@ const App = () => {
 
   return (
     <div className="app padding">
+      <Cursor/>
       <div className="container">
         <h1>PokéWeb</h1>
         <div className="search">
