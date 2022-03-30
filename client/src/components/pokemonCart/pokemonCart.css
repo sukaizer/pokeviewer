@@ -108,4 +108,8 @@
   .pokemon__cart {
     min-width: 450px;
   }
+
+  .poke {
+    color: red;
+  }
 }

@@ -36,7 +36,7 @@ const PokemonCart = (pokemon) => {
 
     function heartPopUp() {
         //TODO prendre en compte la taille du sprite pour les pokemons "grands"
-        console.log(visibleHeart.current);
+        //console.log(visibleHeart.current);
         let el = visibleHeart.current;
         el.style.display = "block";
         el.className = "fade-out";
@@ -57,7 +57,9 @@ const PokemonCart = (pokemon) => {
                 <img className='arrow__right' src={arrow} alt="right" />
             </div>
             <div className='description'>
-                {pokemon.pokemon.name + " #" + pokemon.pokemon.id.toString()}
+                <p><span className='poke'>{pokemon.pokemon.name}</span>{" #" + pokemon.pokemon.id.toString()}</p>
+                <p>{"height : " + pokemon.pokemon.height}</p>
+                <p>{"weight : " + pokemon.pokemon.weight}</p>
             
             </div>
 
