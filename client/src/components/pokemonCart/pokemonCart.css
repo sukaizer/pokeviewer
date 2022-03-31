@@ -71,6 +71,7 @@
   top: 155px;
   left: 215px;
   float: left;
+  z-index: 1;
 }
 
 .heart img {

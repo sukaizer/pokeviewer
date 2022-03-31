@@ -1,16 +1,12 @@
 import { useEffect, useRef } from "react";
 import './App.css';
 
-
-//NOT INTENDED The cursor make the website bigger when off limit :
-// a scrollbar appear a the bottom/right
-
 const Cursor = () => {
     const delay = 2;
 
     const dot = useRef(null);
-    const dotOutline = useRef(null);
-    const dotLine = useRef(null)
+    const bottomShell = useRef(null);
+    const topShell = useRef(null)
 
     const cursorVisible = useRef(true);
     const cursorEnlarged = useRef(false);
@@ -54,17 +50,17 @@ const Cursor = () => {
             dot.current.style.left = endX.current + 'px';
         }
     
-        const animateDotOutline = () => {
+        const animateShell = () => {
             _x.current += (endX.current - _x.current) / delay;
             _y.current += (endY.current - _y.current) / delay;
     
-            dotOutline.current.style.top = _y.current + 'px';
-            dotOutline.current.style.left = _x.current + 'px';
+            bottomShell.current.style.top = _y.current - 10 + 'px';
+            bottomShell.current.style.left = _x.current + 'px';
     
-            dotLine.current.style.top = _y.current + 'px';
-            dotLine.current.style.left = _x.current + 'px';
+            topShell.current.style.top = _y.current + 10 + 'px';
+            topShell.current.style.left = _x.current  + 'px';
     
-            requestRef.current = requestAnimationFrame(animateDotOutline);
+            requestRef.current = requestAnimationFrame(animateShell);
         }
 
         document.addEventListener('mousedown', mouseOverEvent);
@@ -73,7 +69,7 @@ const Cursor = () => {
         document.addEventListener('mouseenter', mouseEnterEvent);
         document.addEventListener('mouseleave', mouseLeaveEvent);
 
-        animateDotOutline();
+        animateShell();
 
         return () => {
             document.removeEventListener('mousedown', mouseOverEvent);
@@ -89,32 +85,32 @@ const Cursor = () => {
     const toggleCursorVisibility = () => {
         if(cursorVisible.current) {
             dot.current.style.opacity = 1;
-            dotOutline.current.style.opacity = 1;
-            dotLine.current.style.opacity = 1;
+            bottomShell.current.style.opacity = 1;
+            topShell.current.style.opacity = 1;
         } else {
             dot.current.style.opacity = 0;
-            dotOutline.current.style.opacity = 0;
-            dotLine.current.style.opacity = 0;
+            bottomShell.current.style.opacity = 0;
+            topShell.current.style.opacity = 0;
         }
     }
 
     const toggleCursorSize = () => {
         if(cursorEnlarged.current){
             dot.current.style.transform = 'translate(-50%, -50%) scale(0.75)';
-            dotOutline.current.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            dotLine.current.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            bottomShell.current.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            topShell.current.style.transform = 'translate(-50%, -50%) scale(1.5)';
         } else {
             dot.current.style.transform = 'translate(-50%, -50%) scale(1)';
-            dotOutline.current.style.transform = 'translate(-50%, -50%) scale(1)';
-            dotLine.current.style.transform = 'translate(-50%, -50%) scale(1)';
+            bottomShell.current.style.transform = 'translate(-50%, -50%) scale(1)';
+            topShell.current.style.transform = 'translate(-50%, -50%) scale(1)';
         }
     }
 
 
     return (
         <>
-        <div ref={dotOutline} className="cursor-dot-outline"></div>
-        <div ref={dotLine} className="cursor-line"></div>
+        <div ref={bottomShell} className="cursor-bottom-shell"></div>
+        <div ref={topShell} className="cursor-top-shell"></div>
         <div ref={dot} className="cursor-dot"></div>
         </>
     );

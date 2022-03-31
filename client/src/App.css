@@ -95,14 +95,10 @@ body {
 }
 
 .cursor-dot,
-.cursor-line,
-.cursor-dot-outline {
+.cursor-top-shell,
+.cursor-bottom-shell {
   pointer-events: none;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
   opacity: 1;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
@@ -110,22 +106,43 @@ body {
 
 
 .cursor-dot {
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
   width: 8px;
   height: 8px;
   background-color: rgb(255, 255, 255);
+  border: 2px solid black;
   z-index: 3;
 }
 
-.cursor-line {
-  width: 23px;
-  height: 8px;
-  background-color: rgb(0, 0, 0);
-  z-index: 2;
+.cursor-top-shell {
+  width: 24px;
+  height: 12px;
+  background-color: rgb(218, 69, 61);
+  border-bottom-left-radius: 110px;
+  border-bottom-right-radius: 110px;
+  border: 2px solid black;
+  z-index: 1;
 }
 
-.cursor-dot-outline{
+.cursor-bottom-shell{
   width: 24px;
-  height: 24px;
-  background-color: rgb(218, 69, 61);
+  height: 12px;
+  background-color: white;
+  border-top-left-radius: 110px;
+  border-top-right-radius: 110px;
+  border: 2px solid black;
   z-index: 1;
+}
+
+::-webkit-scrollbar{
+  background: #fccf00;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #9c5200;
+}
+
+::-webkit-scrollbar-corner{
+  background: #9c5200;
 }
