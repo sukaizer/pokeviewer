@@ -19,6 +19,8 @@ const Cursor = () => {
     const requestRef = useRef(null);
 
     useEffect(() => {
+        toggleCursorSize();
+
         const mouseOverEvent = () => {
             cursorEnlarged.current = true;
             toggleCursorSize();
@@ -83,6 +85,11 @@ const Cursor = () => {
     }, [])
 
     const toggleCursorVisibility = () => {
+
+        dot.current.style.display = "block";
+        bottomShell.current.style.display = "block";
+        topShell.current.style.display = "block";
+
         if(cursorVisible.current) {
             dot.current.style.opacity = 1;
             bottomShell.current.style.opacity = 1;
@@ -105,7 +112,6 @@ const Cursor = () => {
             topShell.current.style.transform = 'translate(-50%, -50%) scale(1)';
         }
     }
-
 
     return (
         <>

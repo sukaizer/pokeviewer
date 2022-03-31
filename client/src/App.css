@@ -97,6 +97,7 @@ body {
 .cursor-dot,
 .cursor-top-shell,
 .cursor-bottom-shell {
+  display: none;
   pointer-events: none;
   position: absolute;
   opacity: 1;

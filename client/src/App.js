@@ -43,8 +43,8 @@ const App = () => {
 
   return (
     <div className="app padding">
-      <Cursor/>
       <div className="container">
+        <Cursor/>
         <h1>PokéWeb</h1>
         <div className="search">
           <input
