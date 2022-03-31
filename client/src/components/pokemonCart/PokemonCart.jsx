@@ -13,6 +13,15 @@ const PokemonCart = (pokemon) => {
     const randomNb =  Math.floor(Math.random() * 15);
     const [actualCart, setActualCart] = useState([carts[randomNb], randomNb]);
 
+    function heightConversion(height) {
+        let newHeight = height / 10;
+        return newHeight;
+    }
+
+    function weightConversion(weight) {
+        let newWeight = weight / 100;
+        return newWeight;
+    }
 
     function previousCart() {
         if (actualCart[1] > 0) {
@@ -58,8 +67,8 @@ const PokemonCart = (pokemon) => {
             </div>
             <div className='description'>
                 <p><span className='poke'>{pokemon.pokemon.name}</span>{" #" + pokemon.pokemon.id.toString()}</p>
-                <p>{"height : " + pokemon.pokemon.height}</p>
-                <p>{"weight : " + pokemon.pokemon.weight}</p>
+                <p>{"height : " + heightConversion(pokemon.pokemon.height) + "m"}</p>
+                <p>{"weight : " + weightConversion(pokemon.pokemon.weight) + "kg"}</p>
             
             </div>
 

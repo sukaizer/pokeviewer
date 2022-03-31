@@ -97,6 +97,10 @@
   left: 85px;
 }
 
+.poke {
+  color: red;
+}
+
 @media screen and (max-width: 625px) {
   .pokemon {
     min-width: 96px;
@@ -108,9 +112,5 @@
 
   .pokemon__cart {
     min-width: 450px;
-  }
-
-  .poke {
-    color: red;
   }
 }
