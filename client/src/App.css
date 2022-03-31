@@ -90,60 +90,14 @@ body {
   flex-direction: row;
 }
 
-* {
-  cursor: none;
-}
-
-.cursor-dot,
-.cursor-top-shell,
-.cursor-bottom-shell {
-  display: none;
-  pointer-events: none;
-  position: absolute;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-
-
-.cursor-dot {
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  width: 8px;
-  height: 8px;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid black;
-  z-index: 3;
-}
-
-.cursor-top-shell {
-  width: 24px;
-  height: 12px;
-  background-color: rgb(218, 69, 61);
-  border-bottom-left-radius: 110px;
-  border-bottom-right-radius: 110px;
-  border: 2px solid black;
-  z-index: 1;
-}
-
-.cursor-bottom-shell{
-  width: 24px;
-  height: 12px;
-  background-color: white;
-  border-top-left-radius: 110px;
-  border-top-right-radius: 110px;
-  border: 2px solid black;
-  z-index: 1;
-}
-
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   background: #fccf00;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background: #9c5200;
 }
 
-::-webkit-scrollbar-corner{
+::-webkit-scrollbar-corner {
   background: #9c5200;
 }
