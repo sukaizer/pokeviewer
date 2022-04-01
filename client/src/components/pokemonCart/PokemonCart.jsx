@@ -5,7 +5,7 @@ import {
 } from "./import"
 
 
-const PokemonCart = (pokemon) => {
+const PokemonCart = (pokemon, {parentCallback}) => {
     const visibleHeart = useRef();
 
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
@@ -70,8 +70,8 @@ const PokemonCart = (pokemon) => {
                 <p>{"height : " + heightConversion(pokemon.pokemon.height) + "m"}</p>
                 <p>{"weight : " + weightConversion(pokemon.pokemon.weight) + "kg"}</p>
             </div>
-            <div className='wrapper__trash clickable' onClick={() => nextCart()}>
-                <img className='clickable' src={trash} alt="right" />
+            <div className='wrapper__trash clickable'>
+                <img className='clickable' src={trash} onClick={() => parentCallback("hello")} alt="right" />
             </div>
 
             <div className='heart'>

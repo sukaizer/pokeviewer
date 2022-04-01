@@ -41,6 +41,10 @@ const App = () => {
     }
   };
 
+  const callback = (count) => {
+    console.log(count);
+  };
+
   return (
     <div className="app padding">
       <div className="container">
@@ -64,7 +68,7 @@ const App = () => {
       {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
       <div className="content">
         {pokemonList.map((p) => (
-          <PokemonCart pokemon={p} key={p.id} />
+          <PokemonCart pokemon={p} parentCallback={callback()} key={p.id} />
         ))}
       </div>
     </div>

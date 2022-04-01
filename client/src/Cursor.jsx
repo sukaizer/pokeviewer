@@ -73,9 +73,9 @@ const Cursor = () => {
       topShell.current.style.top = endY.current + "px";
       topShell.current.style.left = endX.current + "px";
 
-      console.log(
+  /*     console.log(
         "x :" + dot.current.style.left + " y :" + dot.current.style.top
-      );
+      ); */
     };
 
     // a voir si on peut utiliser le scrollTop pour avoir le trajet de scroll et update la position de la souris
@@ -84,8 +84,6 @@ const Cursor = () => {
       toggleCursorVisibility();
       endX.current = e.screenX;
       endY.current = e.screenY;
-
-      console.log(e);
 
       dot.current.style.top = endY.current + "px";
       dot.current.style.left = endX.current + "px";
