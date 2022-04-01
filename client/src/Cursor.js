@@ -10,6 +10,7 @@ const Cursor = () => {
 
   const cursorVisible = useRef(true);
   const cursorEnlarged = useRef(false);
+  const cursorMode = useRef(false);
 
   const endX = useRef(window.innerWidth / 2);
   const endY = useRef(window.innerHeight / 2);
@@ -21,12 +22,28 @@ const Cursor = () => {
   useEffect(() => {
     toggleCursorSize();
 
-    const mouseOverEvent = () => {
+    const mouseOverEvent = (event) => {
+      var target = event.target || event.srcElement;
+      if (target.className.includes("clickable")) {
+        cursorMode.current = true;
+        toggleCursorMode();
+      }
+    };
+
+    const mouseOutEvent = (event) => {
+      var target = event.target || event.srcElement;
+      if (target.className.includes("clickable")) {
+        cursorMode.current = false;
+        toggleCursorMode();
+      }
+    };
+
+    const mouseDownEvent = () => {
       cursorEnlarged.current = true;
       toggleCursorSize();
     };
 
-    const mouseOutEvent = () => {
+    const mouseUpEvent = () => {
       cursorEnlarged.current = false;
       toggleCursorSize();
     };
@@ -65,20 +82,24 @@ const Cursor = () => {
       requestRef.current = requestAnimationFrame(animateShell);
     };
 
-    document.addEventListener("mousedown", mouseOverEvent);
-    document.addEventListener("mouseup", mouseOutEvent);
+    document.addEventListener("mousedown", mouseDownEvent);
+    document.addEventListener("mouseup", mouseUpEvent);
     document.addEventListener("mousemove", mouseMoveEvent);
     document.addEventListener("mouseenter", mouseEnterEvent);
     document.addEventListener("mouseleave", mouseLeaveEvent);
+    document.addEventListener("mouseover", mouseOverEvent);
+    document.addEventListener("mouseout", mouseOutEvent);
 
     animateShell();
 
     return () => {
-      document.removeEventListener("mousedown", mouseOverEvent);
-      document.removeEventListener("mouseup", mouseOutEvent);
+      document.removeEventListener("mousedown", mouseDownEvent);
+      document.removeEventListener("mouseup", mouseUpEvent);
       document.removeEventListener("mousemove", mouseMoveEvent);
       document.removeEventListener("mouseenter", mouseEnterEvent);
       document.removeEventListener("mouseleave", mouseLeaveEvent);
+      document.removeEventListener("mouseover", mouseOverEvent);
+      document.removeEventListener("mouseout", mouseOutEvent);
 
       cancelAnimationFrame(requestRef.current);
     };
@@ -100,15 +121,18 @@ const Cursor = () => {
     }
   };
 
+  //todo animation when click
   const toggleCursorSize = () => {
     if (cursorEnlarged.current) {
-      dot.current.style.transform = "translate(-50%, -50%) scale(0.75)";
-      bottomShell.current.style.transform = "translate(-50%, -50%) scale(1.5)";
-      topShell.current.style.transform = "translate(-50%, -50%) scale(1.5)";
     } else {
-      dot.current.style.transform = "translate(-50%, -50%) scale(1)";
-      bottomShell.current.style.transform = "translate(-50%, -50%) scale(1)";
-      topShell.current.style.transform = "translate(-50%, -50%) scale(1)";
+    }
+  };
+
+  const toggleCursorMode = () => {
+    if (cursorMode.current) {
+      dot.current.style.background = "red";
+    } else {
+      dot.current.style.background = "white";
     }
   };
 

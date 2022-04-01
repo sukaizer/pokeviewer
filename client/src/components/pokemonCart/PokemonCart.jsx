@@ -60,10 +60,10 @@ const PokemonCart = (pokemon) => {
         <div className="pokemon__cart">    
             <img className="cart" src={actualCart[0]} alt={cart2} />
             <div className='wrapper__left' onClick={() => previousCart()}>
-                <img className='arrow__left' src={arrow} alt="left" />   
+                <img className='arrow__left clickable' src={arrow} alt="left" />   
             </div>
             <div className='wrapper__right' onClick={() => nextCart()}>
-                <img className='arrow__right' src={arrow} alt="right" />
+                <img className='arrow__right clickable' src={arrow} alt="right" />
             </div>
             <div className='description'>
                 <p><span className='poke'>{pokemon.pokemon.name}</span>{" #" + pokemon.pokemon.id.toString()}</p>
@@ -76,7 +76,7 @@ const PokemonCart = (pokemon) => {
                 <img className='fade-in' ref={visibleHeart} src={heart} id="heart" alt="heart"/>
             </div>
             <div className='pokemon'>
-                <img onClick={() => heartPopUp()} src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />
+                <img className='clickable' onClick={() => heartPopUp()} src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />
             </div>
         </div>
     );

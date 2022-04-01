@@ -25,10 +25,6 @@
   width: 50px;
 }
 
-.wrapper__right :hover {
-  cursor: pointer;
-}
-
 .wrapper__left {
   position: absolute;
   top: -5px;
@@ -43,9 +39,7 @@
   transform: scaleX(-1);
 }
 
-.wrapper__left :hover {
-  cursor: pointer;
-}
+
 
 .pokemon {
   position: absolute;
@@ -58,9 +52,6 @@
   display: block;
 }
 
-.pokemon :hover {
-  cursor: pointer;
-}
 
 .pokemon img:hover {
   transform: scale(1.3);

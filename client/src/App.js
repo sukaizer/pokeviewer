@@ -44,7 +44,7 @@ const App = () => {
   return (
     <div className="app padding">
       <div className="container">
-        <Cursor/>
+        <Cursor />
         <h1>PokéWeb</h1>
         <div className="search">
           <input
@@ -54,6 +54,7 @@ const App = () => {
             onKeyPress={handleKeypress}
           />
           <img
+            className="clickable"
             src={search}
             alt="search"
             onClick={() => searchPokemon(searchTerm)}

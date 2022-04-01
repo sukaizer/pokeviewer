@@ -9,23 +9,24 @@
   pointer-events: none;
   position: absolute;
   opacity: 1;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 0.1s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .cursor-dot {
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   background-color: rgb(255, 255, 255);
   border: 2px solid black;
   z-index: 3;
 }
 
 .cursor-top-shell {
-  width: 24px;
-  height: 12px;
-  background-color: rgb(218, 69, 61);
+  width: 36px;
+  height: 18px;
+    transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
   border-bottom-left-radius: 110px;
   border-bottom-right-radius: 110px;
   border: 2px solid black;
@@ -33,9 +34,10 @@
 }
 
 .cursor-bottom-shell {
-  width: 24px;
-  height: 12px;
-  background-color: white;
+  width: 36px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  background-color: rgb(218, 69, 61);
   border-top-left-radius: 110px;
   border-top-right-radius: 110px;
   border: 2px solid black;
