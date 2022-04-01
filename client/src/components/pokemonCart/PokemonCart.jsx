@@ -3,10 +3,13 @@ import "./pokemonCart.css"
 import {
     cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart, trash
 } from "./import"
+import useSound from 'use-sound';
 
+import heartSFX from '../../assets/sounds/heart.mp3';
 
 const PokemonCart = (pokemon, {parentCallback}) => {
     const visibleHeart = useRef();
+    const [play] = useSound(heartSFX,{volume: 0.005});
 
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
     
@@ -52,7 +55,7 @@ const PokemonCart = (pokemon, {parentCallback}) => {
         setTimeout(function () { 
         el.style.display = "none";
         el.className = "fade-in";
-         }, 1000);
+         }, 300);
     }
 
 
@@ -78,7 +81,7 @@ const PokemonCart = (pokemon, {parentCallback}) => {
                 <img className='fade-in' ref={visibleHeart} src={heart} id="heart" alt="heart"/>
             </div>
             <div className='pokemon'>
-                <img className='clickable' onClick={() => heartPopUp()} src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />
+                <img className='clickable' onClick={() => {heartPopUp();play();}} src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />
             </div>
         </div>
     );
