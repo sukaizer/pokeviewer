@@ -68,11 +68,35 @@ const Cursor = () => {
 
       dot.current.style.top = endY.current + "px";
       dot.current.style.left = endX.current + "px";
+      bottomShell.current.style.top = endY.current + "px";
+      bottomShell.current.style.left = endX.current + "px";
+      topShell.current.style.top = endY.current + "px";
+      topShell.current.style.left = endX.current + "px";
 
-      console.log("x :" + _x.current + " y :" + _y.current);
+      console.log(
+        "x :" + dot.current.style.left + " y :" + dot.current.style.top
+      );
     };
 
-    const animateShell = () => {
+    // a voir si on peut utiliser le scrollTop pour avoir le trajet de scroll et update la position de la souris
+    const scrollEvent = (e) => {
+      cursorVisible.current = true;
+      toggleCursorVisibility();
+      endX.current = e.screenX;
+      endY.current = e.screenY;
+
+      console.log(e);
+
+      dot.current.style.top = endY.current + "px";
+      dot.current.style.left = endX.current + "px";
+      bottomShell.current.style.top = endY.current + "px";
+      bottomShell.current.style.left = endX.current + "px";
+      topShell.current.style.top = endY.current + "px";
+      topShell.current.style.left = endX.current + "px";
+    };
+
+    // pas besoin d'anim pour l'image
+    /*     const animateShell = () => {
       _x.current += (endX.current - _x.current) / delay;
       _y.current += (endY.current - _y.current) / delay;
 
@@ -83,7 +107,7 @@ const Cursor = () => {
       topShell.current.style.left = _x.current + "px";
 
       requestRef.current = requestAnimationFrame(animateShell);
-    };
+    }; */
 
     document.addEventListener("mousedown", mouseDownEvent);
     document.addEventListener("mouseup", mouseUpEvent);
@@ -92,8 +116,9 @@ const Cursor = () => {
     document.addEventListener("mouseleave", mouseLeaveEvent);
     document.addEventListener("mouseover", mouseOverEvent);
     document.addEventListener("mouseout", mouseOutEvent);
+    document.addEventListener("scroll", scrollEvent);
 
-    animateShell();
+    //animateShell();
 
     return () => {
       document.removeEventListener("mousedown", mouseDownEvent);
@@ -103,6 +128,7 @@ const Cursor = () => {
       document.removeEventListener("mouseleave", mouseLeaveEvent);
       document.removeEventListener("mouseover", mouseOverEvent);
       document.removeEventListener("mouseout", mouseOutEvent);
+      document.removeEventListener("scroll", scrollEvent);
 
       cancelAnimationFrame(requestRef.current);
     };
@@ -124,17 +150,19 @@ const Cursor = () => {
     }
   };
 
-  //todo animation when click
+  //todo animation when click, bug with translation
   const toggleCursorSize = () => {
-    /*     if (cursorEnlarged.current) {
-      topShell.current.className = "cursor-top-shell shake__animation";
-      dot.current.className = "cursor-dot shake__animation";
-      bottomShell.current.className = "cursor-bottom-shell shake__animation";
+    if (cursorEnlarged.current) {
+      //cursor.current.className = "face";
+      //topShell.current.className = "cursor-top-shell shake__animation";
+      //dot.current.className = "cursor-dot shake__animation";
+      //bottomShell.current.className = "cursor-bottom-shell shake__animation";
     } else {
-      topShell.current.className = "cursor-top-shell";
-      dot.current.className = "cursor-dot";
-      bottomShell.current.className = "cursor-bottom-shell";
-    } */
+      //cursor.current.className = "";
+      //topShell.current.className = "cursor-top-shell";
+      //dot.current.className = "cursor-dot";
+      //bottomShell.current.className = "cursor-bottom-shell";
+    }
   };
 
   const toggleCursorMode = () => {
@@ -146,10 +174,10 @@ const Cursor = () => {
   };
 
   return (
-    <div ref={cursor} className="b">
-      <div ref={bottomShell} className="cursor-bottom-shell"></div>
+    <div ref={cursor}>
       <div ref={topShell} className="cursor-top-shell"></div>
       <div ref={dot} className="cursor-dot"></div>
+      <div ref={bottomShell} className="cursor-bottom-shell"></div>
     </div>
   );
 };

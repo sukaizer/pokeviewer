@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import "./pokemonCart.css"
 import {
-    cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart
+    cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart, trash
 } from "./import"
 
 
@@ -69,7 +69,9 @@ const PokemonCart = (pokemon) => {
                 <p><span className='poke'>{pokemon.pokemon.name}</span>{" #" + pokemon.pokemon.id.toString()}</p>
                 <p>{"height : " + heightConversion(pokemon.pokemon.height) + "m"}</p>
                 <p>{"weight : " + weightConversion(pokemon.pokemon.weight) + "kg"}</p>
-            
+            </div>
+            <div className='wrapper__trash clickable' onClick={() => nextCart()}>
+                <img className='clickable' src={trash} alt="right" />
             </div>
 
             <div className='heart'>

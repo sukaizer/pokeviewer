@@ -39,6 +39,17 @@
   transform: scaleX(-1);
 }
 
+.wrapper__trash {
+  position: absolute;
+  top: 70px;
+  left: 320px;
+  float: left;
+}
+
+.wrapper__trash img {
+    display: block;
+    width: 40px;
+}
 
 
 .pokemon {

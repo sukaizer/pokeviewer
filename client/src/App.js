@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import PokemonCart from "./components/pokemonCart/PokemonCart";

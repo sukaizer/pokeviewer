@@ -25,18 +25,7 @@
 .cursor-top-shell {
   width: 36px;
   height: 18px;
-    transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
-  border-bottom-left-radius: 110px;
-  border-bottom-right-radius: 110px;
-  border: 2px solid black;
-  z-index: 1;
-}
-
-.cursor-bottom-shell {
-  width: 36px;
-  height: 18px;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-95%);
   background-color: rgb(218, 69, 61);
   border-top-left-radius: 110px;
   border-top-right-radius: 110px;
@@ -44,11 +33,21 @@
   z-index: 1;
 }
 
+.cursor-bottom-shell {
+  width: 36px;
+  height: 18px;
+  transform: translate(-50%, -5%);
+  background-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 110px;
+  border-bottom-right-radius: 110px;
+  border: 2px solid black;
+  z-index: 1;
+}
+
 
 .shake__animation {
   -webkit-animation: shake-horizontal 0.8s linear both;
-  animation: shake-horizontal 0.8s linear both;
-  transform: translate(10,10);
+  animation: shake-horizontal 0.8s linear both; 
 }
 
 
