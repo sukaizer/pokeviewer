@@ -7,6 +7,7 @@ const Cursor = () => {
   const dot = useRef(null);
   const bottomShell = useRef(null);
   const topShell = useRef(null);
+  const cursor = useRef(null);
 
   const cursorVisible = useRef(true);
   const cursorEnlarged = useRef(false);
@@ -67,6 +68,8 @@ const Cursor = () => {
 
       dot.current.style.top = endY.current + "px";
       dot.current.style.left = endX.current + "px";
+
+      console.log("x :" + _x.current + " y :" + _y.current);
     };
 
     const animateShell = () => {
@@ -123,9 +126,15 @@ const Cursor = () => {
 
   //todo animation when click
   const toggleCursorSize = () => {
-    if (cursorEnlarged.current) {
+    /*     if (cursorEnlarged.current) {
+      topShell.current.className = "cursor-top-shell shake__animation";
+      dot.current.className = "cursor-dot shake__animation";
+      bottomShell.current.className = "cursor-bottom-shell shake__animation";
     } else {
-    }
+      topShell.current.className = "cursor-top-shell";
+      dot.current.className = "cursor-dot";
+      bottomShell.current.className = "cursor-bottom-shell";
+    } */
   };
 
   const toggleCursorMode = () => {
@@ -137,11 +146,11 @@ const Cursor = () => {
   };
 
   return (
-    <>
+    <div ref={cursor} className="b">
       <div ref={bottomShell} className="cursor-bottom-shell"></div>
       <div ref={topShell} className="cursor-top-shell"></div>
       <div ref={dot} className="cursor-dot"></div>
-    </>
+    </div>
   );
 };
 
