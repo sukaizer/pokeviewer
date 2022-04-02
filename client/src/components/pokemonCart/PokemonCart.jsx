@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef} from 'react'
 import "./pokemonCart.css"
 import {
     cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart, trash
@@ -7,7 +7,9 @@ import useSound from 'use-sound';
 
 import heartSFX from '../../assets/sounds/heart.mp3';
 
-const PokemonCart = (pokemon, {parentCallback}) => {
+const PokemonCart = (pokemon, { parentCallback }) => {
+    const callback = parentCallback && parentCallback.callback;
+
     const visibleHeart = useRef();
     const [play] = useSound(heartSFX,{volume: 0.005});
 
@@ -74,7 +76,7 @@ const PokemonCart = (pokemon, {parentCallback}) => {
                 <p>{"weight : " + weightConversion(pokemon.pokemon.weight) + "kg"}</p>
             </div>
             <div className='wrapper__trash clickable'>
-                <img className='clickable' src={trash} onClick={() => parentCallback("hello")} alt="right" />
+                <img className='clickable' src={trash} onClick={() => callback("hello")} alt="right" />
             </div>
 
             <div className='heart'>

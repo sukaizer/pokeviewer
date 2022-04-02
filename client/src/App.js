@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import PokemonCart from "./components/pokemonCart/PokemonCart";
@@ -41,9 +41,9 @@ const App = () => {
     }
   };
 
-  const callback = (count) => {
+  const callback = useCallback((count) => {
     console.log(count);
-  };
+  }, []);
 
   return (
     <div className="app padding">
@@ -68,7 +68,7 @@ const App = () => {
       {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
       <div className="content">
         {pokemonList.map((p) => (
-          <PokemonCart pokemon={p} parentCallback={callback()} key={p.id} />
+          <PokemonCart pokemon={p} parentCallback={callback} key={p.id} />
         ))}
       </div>
     </div>
