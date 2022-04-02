@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import createPersistedState from 'use-persisted-state';
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import PokemonCart from "./components/pokemonCart/PokemonCart";
@@ -8,7 +9,8 @@ import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState("Pikachu");
+  const useSearchState = createPersistedState('Pokemon')
+  const [searchTerm, setSearchTerm] = useSearchState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
 
   const searchPokemon = async (name) => {
