@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from "react";
-import createPersistedState from 'use-persisted-state';
+import createPersistedState from "use-persisted-state";
 import "./App.css";
 import search from "./assets/icons/search.svg";
-import volumeOn from "./assets/icons/volumeOn.svg"
-import volumeOff from "./assets/icons/volumeOff.svg"
+import volumeOn from "./assets/icons/volumeOn.svg";
+import volumeOff from "./assets/icons/volumeOff.svg";
 import PokemonCart from "./components/pokemonCart/PokemonCart";
 import Cursor from "./Cursor";
 
@@ -12,7 +12,7 @@ const P = new Pokedex();
 
 const App = () => {
   const [volumeState, setVolumeState] = useState(volumeOff);
-  const useSearchState = createPersistedState('Pokemon')
+  const useSearchState = createPersistedState("Pokemon");
   const [searchTerm, setSearchTerm] = useSearchState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
 
@@ -51,12 +51,12 @@ const App = () => {
   }, []);
 
   const changeVolume = () => {
-    if(volumeState === volumeOff) {
+    if (volumeState === volumeOff) {
       setVolumeState(volumeOn);
     } else {
       setVolumeState(volumeOff);
     }
-  }
+  };
 
   return (
     <div className="padding">
