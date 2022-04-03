@@ -2,6 +2,8 @@ import React, { useState, useCallback } from "react";
 import createPersistedState from 'use-persisted-state';
 import "./App.css";
 import search from "./assets/icons/search.svg";
+import volumeOn from "./assets/icons/volumeOn.svg"
+import volumeOff from "./assets/icons/volumeOff.svg"
 import PokemonCart from "./components/pokemonCart/PokemonCart";
 import Cursor from "./Cursor";
 
@@ -9,6 +11,7 @@ import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
 
 const App = () => {
+  const [volumeState, setVolumeState] = useState(volumeOff);
   const useSearchState = createPersistedState('Pokemon')
   const [searchTerm, setSearchTerm] = useSearchState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
@@ -47,31 +50,47 @@ const App = () => {
     console.log(count);
   }, []);
 
+  const changeVolume = () => {
+    if(volumeState === volumeOff) {
+      setVolumeState(volumeOn);
+    } else {
+      setVolumeState(volumeOff);
+    }
+  }
+
   return (
-    <div className="app padding">
-      <div className="container">
-        <Cursor />
-        <h1>PokéWeb</h1>
-        <div className="search">
-          <input
-            placeholder="Enter the Pokémon or their number"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={handleKeypress}
-          />
-          <img
-            className="clickable"
-            src={search}
-            alt="search"
-            onClick={() => searchPokemon(searchTerm)}
-          />
+    <div className="padding">
+      <img
+        className="volume clickable"
+        src={volumeState}
+        alt="volumeOff"
+        onClick={() => changeVolume()}
+      />
+      <div className="app">
+        <div className="container">
+          <h1>PokéWeb</h1>
+          <div className="search">
+            <input
+              placeholder="Enter the Pokémon or their number"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={handleKeypress}
+            />
+            <img
+              className="clickable"
+              src={search}
+              alt="search"
+              onClick={() => searchPokemon(searchTerm)}
+            />
+          </div>
         </div>
-      </div>
-      {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
-      <div className="content">
-        {pokemonList.map((p) => (
-          <PokemonCart pokemon={p} parentCallback={callback} key={p.id} />
-        ))}
+        {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
+        <div className="content">
+          {pokemonList.map((p) => (
+            <PokemonCart pokemon={p} parentCallback={callback} key={p.id} />
+          ))}
+        </div>
+        <Cursor />
       </div>
     </div>
   );

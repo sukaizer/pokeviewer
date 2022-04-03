@@ -89,6 +89,11 @@ body {
   flex-direction: row;
 }
 
+.volume {
+  position: sticky;
+  top: 60px;
+}
+
 ::-webkit-scrollbar {
   background: #fccf00;
 }
