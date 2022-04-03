@@ -151,12 +151,12 @@ const Cursor = () => {
   //todo animation when click, bug with translation
   const toggleCursorSize = () => {
     if (cursorEnlarged.current) {
-      //cursor.current.className = "face";
+      cursor.current.className = "face";
       //topShell.current.className = "cursor-top-shell shake__animation";
       //dot.current.className = "cursor-dot shake__animation";
       //bottomShell.current.className = "cursor-bottom-shell shake__animation";
     } else {
-      //cursor.current.className = "";
+      cursor.current.className = "";
       //topShell.current.className = "cursor-top-shell";
       //dot.current.className = "cursor-dot";
       //bottomShell.current.className = "cursor-bottom-shell";
