@@ -10,7 +10,6 @@ import heartSFX from '../../assets/sounds/heart.mp3';
 const PokemonCart = ({pokemon, childToParent}) => {
     const visibleHeart = useRef();
     const [play] = useSound(heartSFX, { volume: 0.005 });
-    const data = "This is data from Child Component to the Parent Component."
 
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
     
@@ -78,7 +77,7 @@ const PokemonCart = ({pokemon, childToParent}) => {
                 <img
                     className='clickable'
                     src={trash}
-                    onClick={() => childToParent(data)}
+                    onClick={() => childToParent(pokemon)}
                     alt="right" />
             </div>
 

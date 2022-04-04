@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import createPersistedState from "use-persisted-state";
 import "./App.css";
 import search from "./assets/icons/search.svg";
@@ -46,8 +46,13 @@ const App = () => {
     }
   };
 
-  const childToParent = (childdata) => {
-    console.log(childdata);
+  const childToParent = (pokemon) => {
+    const array = pokemonList.slice();
+    const index = pokemonList.indexOf(array);
+    isElementIn(pokemon, array)
+      ? array.splice(index, 1)
+      : console.log("Error : pokemon not in list");
+    setPokemonList(array);
   };
 
   const changeVolume = () => {
