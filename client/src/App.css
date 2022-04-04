@@ -40,7 +40,7 @@ h1 {
 }
 
 .search {
-  width: 50%;
+  width: 60%;
   margin: 2rem 0 0 0;
   display: flex;
   align-items: center;
@@ -51,15 +51,15 @@ h1 {
 
 .search input {
   flex: 1;
-  width: 80%;
+  width: 90%;
   margin: 0 0 0px;
   border: none;
-  padding: 1rem 2rem;
+  padding: 0;
   border-radius: 3rem;
   outline: none;
   color: #fff6a4;
   background: #9c5200;
-  text-indent: 10px;
+  text-indent: 35px;
   font-family: var(--font-family);
   letter-spacing: 5px;
   font-size: 23px;
@@ -72,10 +72,10 @@ h1 {
 
 .search img {
   justify-content: right;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   background: #f6e752;
-  padding: 1rem;
+  padding: 1.3rem;
   border-top-right-radius: 3rem;
   border-bottom-right-radius: 3rem;
 }
