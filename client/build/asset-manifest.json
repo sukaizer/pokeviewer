@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a79251d1.css",
-    "main.js": "/static/js/main.6b34d9cc.js",
+    "main.css": "/static/css/main.e99abdd6.css",
+    "main.js": "/static/js/main.3ed384c0.js",
     "static/js/845.4fbf7743.chunk.js": "/static/js/845.4fbf7743.chunk.js",
     "static/media/Pokemon Solid.ttf": "/static/media/Pokemon Solid.5d60be1f7ff5fcc21fc1.ttf",
     "static/media/Minecraft.ttf": "/static/media/Minecraft.81f6c7f882fcc2dee106.ttf",
@@ -17,12 +17,12 @@
     "static/media/volumeOn.svg": "/static/media/volumeOn.ecb81ea38ee1c4671607a65e4b31bdc4.svg",
     "static/media/volumeOff.svg": "/static/media/volumeOff.9d16ad3d66ff0253ab266e772bbdb307.svg",
     "static/media/search.svg": "/static/media/search.e83cf7f1b38cb92f57870c76e1b2d64d.svg",
-    "main.a79251d1.css.map": "/static/css/main.a79251d1.css.map",
-    "main.6b34d9cc.js.map": "/static/js/main.6b34d9cc.js.map",
+    "main.e99abdd6.css.map": "/static/css/main.e99abdd6.css.map",
+    "main.3ed384c0.js.map": "/static/js/main.3ed384c0.js.map",
     "845.4fbf7743.chunk.js.map": "/static/js/845.4fbf7743.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a79251d1.css",
-    "static/js/main.6b34d9cc.js"
+    "static/css/main.e99abdd6.css",
+    "static/js/main.3ed384c0.js"
   ]
 }
