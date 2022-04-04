@@ -46,9 +46,9 @@ const App = () => {
     }
   };
 
-  const callback = useCallback((count) => {
-    console.log(count);
-  }, []);
+  const childToParent = (childdata) => {
+    console.log(childdata);
+  };
 
   const changeVolume = () => {
     if (volumeState === volumeOff) {
@@ -87,7 +87,7 @@ const App = () => {
         {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
         <div className="content">
           {pokemonList.map((p) => (
-            <PokemonCart pokemon={p} parentCallback={callback} key={p.id} />
+            <PokemonCart pokemon={p} childToParent={childToParent} key={p.id} />
           ))}
         </div>
         <Cursor />

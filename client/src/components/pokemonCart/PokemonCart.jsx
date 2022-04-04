@@ -7,11 +7,10 @@ import useSound from 'use-sound';
 
 import heartSFX from '../../assets/sounds/heart.mp3';
 
-const PokemonCart = (pokemon, { parentCallback }) => {
-    const callback = parentCallback && parentCallback.callback;
-
+const PokemonCart = ({pokemon, childToParent}) => {
     const visibleHeart = useRef();
-    const [play] = useSound(heartSFX,{volume: 0.005});
+    const [play] = useSound(heartSFX, { volume: 0.005 });
+    const data = "This is data from Child Component to the Parent Component."
 
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
     
@@ -71,19 +70,23 @@ const PokemonCart = (pokemon, { parentCallback }) => {
                 <img className='arrow__right clickable' src={arrow} alt="right" />
             </div>
             <div className='description'>
-                <p><span className='poke'>{pokemon.pokemon.name}</span>{" #" + pokemon.pokemon.id.toString()}</p>
-                <p>{"height : " + heightConversion(pokemon.pokemon.height) + "m"}</p>
-                <p>{"weight : " + weightConversion(pokemon.pokemon.weight) + "kg"}</p>
+                <p><span className='poke'>{pokemon.name}</span>{" #" + pokemon.id.toString()}</p>
+                <p>{"height : " + heightConversion(pokemon.height) + "m"}</p>
+                <p>{"weight : " + weightConversion(pokemon.weight) + "kg"}</p>
             </div>
             <div className='wrapper__trash clickable'>
-                <img className='clickable' src={trash} onClick={() => callback("hello")} alt="right" />
+                <img
+                    className='clickable'
+                    src={trash}
+                    onClick={() => childToParent(data)}
+                    alt="right" />
             </div>
 
             <div className='heart'>
                 <img className='fade-in' ref={visibleHeart} src={heart} id="heart" alt="heart"/>
             </div>
             <div className='pokemon'>
-                <img className='clickable' onClick={() => {heartPopUp();play();}} src={pokemon.pokemon.sprites.front_default} alt={ pokemon.pokemon.name } />
+                <img className='clickable' onClick={() => {heartPopUp();play();}} src={pokemon.sprites.front_default} alt={ pokemon.name } />
             </div>
         </div>
     );
