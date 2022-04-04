@@ -48,7 +48,8 @@ const App = () => {
 
   const childToParent = (pokemon) => {
     const array = pokemonList.slice();
-    const index = pokemonList.indexOf(array);
+    const index = pokemonList.indexOf(pokemon);
+    console.log(index);
     isElementIn(pokemon, array)
       ? array.splice(index, 1)
       : console.log("Error : pokemon not in list");
