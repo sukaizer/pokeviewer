@@ -115,7 +115,7 @@ const PokemonCart = ({pokemon, childToParent, volumeState}) => {
                     className='clickable'
                     onClick={() => {
                         heartPopUp();
-                        volumeState ? play() : console.log("muted");
+                        volumeState[1] ? play() : console.log("muted");
                     }}
                     src={pokemon.sprites.front_default}
                     alt={pokemon.name} />
