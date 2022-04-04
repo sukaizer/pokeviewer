@@ -1,7 +1,7 @@
 import React, { useState, useRef} from 'react'
 import "./pokemonCart.css"
 import {
-    cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart, trash
+    cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart, trash, bin1, bin2
 } from "./import"
 import useSound from 'use-sound';
 
@@ -9,6 +9,8 @@ import heartSFX from '../../assets/sounds/heart.mp3';
 
 const PokemonCart = ({pokemon, childToParent}) => {
     const visibleHeart = useRef();
+    const bin_closed = useRef();
+    const bin_opened = useRef();
     const [play] = useSound(heartSFX, { volume: 0.005 });
 
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
@@ -58,6 +60,18 @@ const PokemonCart = ({pokemon, childToParent}) => {
          }, 300);
     }
 
+    function setIsShown(bool) {
+        let b1 = bin_closed.current;
+        let b2 = bin_opened.current;
+        if (bool) {
+            b1.className = "clickable hidden";
+            b2.className = "clickable";
+        } else {
+            b1.className = "clickable";
+            b2.className = "clickable hidden";
+        }
+    }
+
 
     return (
         <div className="pokemon__cart">    
@@ -73,10 +87,22 @@ const PokemonCart = ({pokemon, childToParent}) => {
                 <p>{"height : " + heightConversion(pokemon.height) + "m"}</p>
                 <p>{"weight : " + weightConversion(pokemon.weight) + "kg"}</p>
             </div>
-            <div className='wrapper__trash clickable'>
+            <div
+                className='wrapper__trash clickable'
+                onClick={() => childToParent(pokemon)}
+                onMouseEnter={() => setIsShown(true)}
+                onMouseLeave={() => setIsShown(false)}>
+                
                 <img
                     className='clickable'
-                    src={trash}
+                    ref={bin_closed}
+                    src={bin1}
+                    alt="right" />
+                
+                <img
+                    className='clickable hidden'
+                    ref={bin_opened}
+                    src={bin2}
                     onClick={() => childToParent(pokemon)}
                     alt="right" />
             </div>

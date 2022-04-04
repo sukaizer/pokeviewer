@@ -41,16 +41,19 @@
 
 .wrapper__trash {
   position: absolute;
-  top: 70px;
-  left: 320px;
+  top: 60px;
+  left: 300px;
   float: left;
 }
 
 .wrapper__trash img {
     display: block;
-    width: 40px;
+    width: 70px;
 }
 
+img.hidden {
+  display: none;
+}
 
 .pokemon {
   position: absolute;
