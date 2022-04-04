@@ -1,7 +1,7 @@
 import React, { useState, useRef} from 'react'
 import "./pokemonCart.css"
 import {
-    cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, heart, trash, bin1, bin2
+    cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16, arrow, arrow_hover ,heart, trash, bin1, bin2
 } from "./import"
 import useSound from 'use-sound';
 
@@ -13,6 +13,10 @@ const PokemonCart = ({pokemon, childToParent, volumeState}) => {
     const visibleHeart = useRef();
     const bin_closed = useRef();
     const bin_opened = useRef();
+    const arrow_left = useRef();
+    const arrow_left_hover = useRef();
+    const arrow_right = useRef();
+    const arrow_right_hover = useRef();
     const [playHeart] = useSound(heartSFX, { volume: 0.005 });
     const [playBin] = useSound(binSFX, { volume: 0.08 });
 
@@ -75,16 +79,55 @@ const PokemonCart = ({pokemon, childToParent, volumeState}) => {
         }
     }
 
+    function hoverLeftArrow(bool) {
+        let b1 = arrow_left.current;
+        let b2 = arrow_left_hover.current;
+        if (bool) {
+            b1.className = "arrow__left clickable hidden";
+            b2.className = "arrow__left clickable";
+        } else {
+            b1.className = "arrow__left clickable";
+            b2.className = "arrow__left clickable hidden";
+        }
+    }
+
+    function hoverRightArrow(bool) {
+    let b1 = arrow_right.current;
+    let b2 = arrow_right_hover.current;
+    if (bool) {
+        b1.className = "arrow__right clickable hidden";
+        b2.className = "arrow__right clickable";
+    } else {
+        b1.className = "arrow__right clickable";
+        b2.className = "arrow__right clickable hidden";
+    }
+}
+
 
     return (
         <div className="pokemon__cart">    
             <img className="cart" src={actualCart[0]} alt={cart2} />
-            <div className='wrapper__left clickable' onClick={() => previousCart()}>
-                <img className='arrow__left clickable' src={arrow} alt="left" />   
+
+            <div
+                className='wrapper__left clickable'
+                onClick={() => previousCart()}
+                onMouseEnter={() => hoverLeftArrow(true)}
+                onMouseLeave={() => hoverLeftArrow(false)}
+            >
+                <img className='arrow__left clickable' src={arrow} ref={arrow_left} alt="left" />   
+                <img className='arrow__left clickable hidden' src={arrow_hover} ref={arrow_left_hover} alt="left" />  
             </div>
-            <div className='wrapper__right clickable' onClick={() => nextCart()}>
-                <img className='arrow__right clickable' src={arrow} alt="right" />
+            <div
+                className='wrapper__right clickable'
+                onClick={() => nextCart()}
+                onMouseEnter={() => hoverRightArrow(true)}
+                onMouseLeave={() => hoverRightArrow(false)}
+            >
+                <img className='arrow__right clickable' src={arrow} ref={arrow_right} alt="right" />
+                <img className='arrow__right clickable hidden' src={arrow_hover} ref={arrow_right_hover} alt="right" />
             </div>
+            
+            
             <div className='description'>
                 <p><span className='poke'>{pokemon.name}</span>{" #" + pokemon.id.toString()}</p>
                 <p>{"height : " + heightConversion(pokemon.height) + "m"}</p>

@@ -17,7 +17,6 @@
   top: -5px;
   left: 330px;
   float: left;
-  border: dashed rgb(100, 53, 0);
 }
 
 .wrapper__right img {
@@ -30,7 +29,6 @@
   top: -5px;
   left: 60px;
   float: left;
-  border: dashed rgb(100, 53, 0);
 }
 
 .wrapper__left img {

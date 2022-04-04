@@ -15,6 +15,7 @@ export { default as cart14 } from "../../assets/carts/cart14.png";
 export { default as cart15 } from "../../assets/carts/cart15.png";
 export { default as cart16 } from "../../assets/carts/cart16.png";
 export { default as arrow } from "../../assets/carts/pointer.png";
+export { default as arrow_hover } from "../../assets/carts/pointerHover.png";
 export { default as heart } from "../../assets/carts/heart.png";
 export { default as bin1 } from "../../assets/icons/bin1.svg";
 export { default as bin2 } from "../../assets/icons/bin2.svg";
