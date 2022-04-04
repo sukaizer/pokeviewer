@@ -11,7 +11,7 @@ import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
 
 const App = () => {
-  const [volumeState, setVolumeState] = useState(volumeOff);
+  const [volumeState, setVolumeState] = useState(volumeOn);
   const useSearchState = createPersistedState("Pokemon");
   const [searchTerm, setSearchTerm] = useSearchState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
@@ -68,7 +68,7 @@ const App = () => {
       />
       <div className="app">
         <div className="container">
-          <h1>PokéWeb</h1>
+          <h1>PokéViewer</h1>
           <div className="search">
             <input
               placeholder="Enter the Pokémon or their number"
