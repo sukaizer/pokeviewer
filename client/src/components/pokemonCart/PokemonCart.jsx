@@ -6,12 +6,15 @@ import {
 import useSound from 'use-sound';
 
 import heartSFX from '../../assets/sounds/heart.mp3';
+import binSFX from '../../assets/sounds/bin.mp3';
+
 
 const PokemonCart = ({pokemon, childToParent, volumeState}) => {
     const visibleHeart = useRef();
     const bin_closed = useRef();
     const bin_opened = useRef();
-    const [play] = useSound(heartSFX, { volume: 0.005 });
+    const [playHeart] = useSound(heartSFX, { volume: 0.005 });
+    const [playBin] = useSound(binSFX, { volume: 0.08 });
 
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
     
@@ -89,7 +92,10 @@ const PokemonCart = ({pokemon, childToParent, volumeState}) => {
             </div>
             <div
                 className='wrapper__trash clickable'
-                onClick={() => childToParent(pokemon)}
+                onClick={() => {
+                    volumeState[1] ? playBin() : console.log("muted");
+                    childToParent(pokemon);
+                }}
                 onMouseEnter={() => setIsShown(true)}
                 onMouseLeave={() => setIsShown(false)}>
                 
@@ -115,7 +121,7 @@ const PokemonCart = ({pokemon, childToParent, volumeState}) => {
                     className='clickable'
                     onClick={() => {
                         heartPopUp();
-                        volumeState[1] ? play() : console.log("muted");
+                        volumeState[1] ? playHeart() : console.log("muted");
                     }}
                     src={pokemon.sprites.front_default}
                     alt={pokemon.name} />
