@@ -7,7 +7,7 @@ import useSound from 'use-sound';
 
 import heartSFX from '../../assets/sounds/heart.mp3';
 
-const PokemonCart = ({pokemon, childToParent}) => {
+const PokemonCart = ({pokemon, childToParent, volumeState}) => {
     const visibleHeart = useRef();
     const bin_closed = useRef();
     const bin_opened = useRef();
@@ -111,7 +111,14 @@ const PokemonCart = ({pokemon, childToParent}) => {
                 <img className='fade-in' ref={visibleHeart} src={heart} id="heart" alt="heart"/>
             </div>
             <div className='pokemon'>
-                <img className='clickable' onClick={() => {heartPopUp();play();}} src={pokemon.sprites.front_default} alt={ pokemon.name } />
+                <img
+                    className='clickable'
+                    onClick={() => {
+                        heartPopUp();
+                        volumeState ? play() : console.log("muted");
+                    }}
+                    src={pokemon.sprites.front_default}
+                    alt={pokemon.name} />
             </div>
         </div>
     );

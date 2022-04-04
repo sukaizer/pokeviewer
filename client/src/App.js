@@ -11,7 +11,7 @@ import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
 
 const App = () => {
-  const [volumeState, setVolumeState] = useState(volumeOn);
+  const [volumeState, setVolumeState] = useState([volumeOn, true]);
   const useSearchState = createPersistedState("Pokemon");
   const [searchTerm, setSearchTerm] = useSearchState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
@@ -57,10 +57,10 @@ const App = () => {
   };
 
   const changeVolume = () => {
-    if (volumeState === volumeOff) {
-      setVolumeState(volumeOn);
+    if (volumeState[1] === false) {
+      setVolumeState([volumeOn, true]);
     } else {
-      setVolumeState(volumeOff);
+      setVolumeState([volumeOff, false]);
     }
   };
 
@@ -68,7 +68,7 @@ const App = () => {
     <div className="padding">
       <img
         className="volume clickable"
-        src={volumeState}
+        src={volumeState[0]}
         alt="volumeOff"
         onClick={() => changeVolume()}
       />
@@ -93,7 +93,12 @@ const App = () => {
         {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
         <div className="content">
           {pokemonList.map((p) => (
-            <PokemonCart pokemon={p} childToParent={childToParent} key={p.id} />
+            <PokemonCart
+              pokemon={p}
+              childToParent={childToParent}
+              volumeState={volumeState}
+              key={p.id}
+            />
           ))}
         </div>
         <Cursor />
