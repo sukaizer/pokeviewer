@@ -15,16 +15,16 @@
 .cursor-dot {
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  width: 9px;
-  height: 9px;
+  width: 7px;
+  height: 7px;
   background-color: rgb(255, 255, 255);
   border: 2px solid black;
   z-index: 3;
 }
 
 .cursor-top-shell {
-  width: 36px;
-  height: 18px;
+  width: 28px;
+  height: 14px;
   transform: translate(-50%,-95%);
   background-color: rgb(218, 69, 61);
   border-top-left-radius: 110px;
@@ -34,8 +34,8 @@
 }
 
 .cursor-bottom-shell {
-  width: 36px;
-  height: 18px;
+  width: 28px;
+  height: 14px;
   transform: translate(-50%, -5%);
   background-color: rgb(255, 255, 255);
   border-bottom-left-radius: 110px;

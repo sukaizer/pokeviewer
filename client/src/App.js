@@ -5,7 +5,7 @@ import search from "./assets/icons/search.svg";
 import volumeOn from "./assets/icons/volumeOn.svg";
 import volumeOff from "./assets/icons/volumeOff.svg";
 import PokemonCart from "./components/pokemonCart/PokemonCart";
-import Cursor from "./Cursor";
+import Cursor from "./components/cursor/Cursor";
 
 import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
