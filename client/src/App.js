@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import createPersistedState from "use-persisted-state";
 import "./App.css";
 import search from "./assets/icons/search.svg";
@@ -15,9 +15,10 @@ const App = () => {
   const useSearchState = createPersistedState("Pokemon");
   const [searchTerm, setSearchTerm] = useSearchState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
+  const err = useRef();
 
   const searchPokemon = async (name) => {
-    P.getPokemonByName(name.toLowerCase()) // with Promise
+    P.getPokemonByName(name.toLowerCase().replace(/\s/g, "")) // with Promise
       .then((response) => {
         isElementIn(response, pokemonList)
           ? console.log("pokemon already here")
@@ -26,6 +27,7 @@ const App = () => {
       })
       .catch((error) => {
         console.log("There was an ERROR: ", error);
+        displayErr();
       });
   };
 
@@ -64,6 +66,14 @@ const App = () => {
     }
   };
 
+  const displayErr = () => {
+    const el = err.current;
+    el.className = "no__pokemon";
+    setTimeout(function () {
+      el.className = "hidden no__pokemon";
+    }, 1000);
+  };
+
   return (
     <div className="padding">
       <img
@@ -90,7 +100,9 @@ const App = () => {
             />
           </div>
         </div>
-        {/* AJOUTER MESSAGE SI LE POKEMON RECHERCHE NEXISTE PAS OU ERREUR */}
+        <div className="hidden no__pokemon" ref={err}>
+          Pokemon not found !
+        </div>
         <div className="content">
           {pokemonList.map((p) => (
             <PokemonCart
