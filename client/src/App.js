@@ -41,6 +41,32 @@ const App = () => {
     return b;
   }
 
+  const searchPokemon2 = async (index) => {
+    P.getPokemonByName(index) // with Promise
+      .then((response) => {
+        setPokemonList((prevArray) => [...prevArray, response]);
+        console.log(response);
+      })
+  }
+
+  function isElementIn2(index, array) {
+    let b = false;
+    array.forEach((e) => {
+      if (index === e.id) {
+        b = true;
+      }
+    });
+    return b;
+  }
+
+  const randomisePokemon = async () => {
+    const randomNb =  Math.floor(Math.random() * 897) + 1;
+    if (isElementIn2(randomNb, pokemonList)){
+      randomisePokemon();
+    }
+    searchPokemon2(randomNb);
+  }
+
   const handleKeypress = (e) => {
     //it triggers by pressing the enter key
     if (e.key === "Enter") {
@@ -96,9 +122,10 @@ const App = () => {
               className="clickable"
               src={search}
               alt="search"
-              onClick={() => searchPokemon(searchTerm)}
+              onClick={() => searchPokemon()}
             />
           </div>
+        <button className='random__button clickable' onClick={() => randomisePokemon()}>Random Pokemon</button>
         </div>
         <div className="hidden no__pokemon" ref={err}>
           Pokemon not found !

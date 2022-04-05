@@ -109,6 +109,25 @@ h1 {
   top: 60px;
 }
 
+.random__button {
+  background-color: #f6e752; /* Green */
+  border: 5px solid #9c5200;
+  border-radius: 30px;
+  font-family: Pixel;
+  color: #9c5200;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.random__button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 ::-webkit-scrollbar {
   background: #fccf00;
 }
