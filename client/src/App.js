@@ -3,13 +3,12 @@ import createPersistedState from "use-persisted-state";
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import volumeOn from "./assets/icons/volumeOn.svg";
-import volumeOnSFX from './assets/sounds/volumeOn.mp3';
+import volumeOnSFX from "./assets/sounds/volumeOn.mp3";
 import volumeOff from "./assets/icons/volumeOff.svg";
-import volumeOffSFX from './assets/sounds/volumeOff.mp3';
+import volumeOffSFX from "./assets/sounds/volumeOff.mp3";
 import PokemonCart from "./components/pokemonCart/PokemonCart";
 import Cursor from "./components/cursor/Cursor";
-import useSound from 'use-sound';
-
+import useSound from "use-sound";
 
 import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
@@ -20,13 +19,14 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useSearchState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
   const err = useRef();
-  const [playVolumeOn] = useSound(volumeOnSFX, {volume: 0.2});
-  const [playVolumeOff] = useSound(volumeOffSFX, {volume: 0.5});
+  const [playVolumeOn] = useSound(volumeOnSFX, { volume: 0.2 });
+  const [playVolumeOff] = useSound(volumeOffSFX, { volume: 0.5 });
 
   const searchPokemon = async (name) => {
+    console.log(name);
     P.getPokemonByName(name.toLowerCase().replace(/\s/g, "")) // with Promise
       .then((response) => {
-        isElementIn(response, pokemonList)
+        isElementIn(response.id, pokemonList)
           ? console.log("pokemon already here")
           : setPokemonList((prevArray) => [...prevArray, response]);
         console.log(response);
@@ -37,10 +37,10 @@ const App = () => {
       });
   };
 
-  function isElementIn(element, array) {
+  function isElementIn(index, array) {
     let b = false;
     array.forEach((e) => {
-      if (element.name === e.name) {
+      if (index === e.id) {
         b = true;
       }
     });
@@ -52,26 +52,16 @@ const App = () => {
       .then((response) => {
         setPokemonList((prevArray) => [...prevArray, response]);
         console.log(response);
-      })
-  }
+      });
+  };
 
-  function isElementIn2(index, array) {
-    let b = false;
-    array.forEach((e) => {
-      if (index === e.id) {
-        b = true;
-      }
-    });
-    return b;
-  }
-
-  const randomisePokemon = async () => {
-    const randomNb =  Math.floor(Math.random() * 897) + 1;
-    if (isElementIn2(randomNb, pokemonList)){
-      randomisePokemon();
+  const randomizePokemon = async () => {
+    const randomNb = Math.floor(Math.random() * 897) + 1;
+    if (isElementIn(randomNb, pokemonList)) {
+      randomizePokemon();
     }
     searchPokemon2(randomNb);
-  }
+  };
 
   const handleKeypress = (e) => {
     //it triggers by pressing the enter key
@@ -131,10 +121,15 @@ const App = () => {
               className="clickable"
               src={search}
               alt="search"
-              onClick={() => searchPokemon()}
+              onClick={() => searchPokemon(searchTerm)}
             />
           </div>
-        <button className='random__button clickable' onClick={() => randomisePokemon()}>Random Pokemon</button>
+          <button
+            className="random__button clickable"
+            onClick={() => randomizePokemon()}
+          >
+            Random Pokemon
+          </button>
         </div>
         <div className="hidden no__pokemon" ref={err}>
           Pokemon not found !
