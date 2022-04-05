@@ -7,6 +7,7 @@ import useSound from 'use-sound';
 
 import heartSFX from '../../assets/sounds/heart.mp3';
 import binSFX from '../../assets/sounds/bin.mp3';
+import arrowSFX from '../../assets/sounds/arrow.mp3';
 
 
 const PokemonCart = ({pokemon, childToParent, volumeState}) => {
@@ -17,8 +18,9 @@ const PokemonCart = ({pokemon, childToParent, volumeState}) => {
     const arrow_left_hover = useRef();
     const arrow_right = useRef();
     const arrow_right_hover = useRef();
-    const [playHeart] = useSound(heartSFX, { volume: 0.005 });
-    const [playBin] = useSound(binSFX, { volume: 0.08 });
+    const [playHeart] = useSound(heartSFX, { volume: 0.05 });
+    const [playBin] = useSound(binSFX, { volume: 0.2 });
+    const [playArrow] = useSound(arrowSFX, { volume: 0.5 });
 
     var carts = [cart1, cart2, cart3, cart4, cart5, cart6, cart7, cart8, cart9, cart10, cart11, cart12, cart13, cart14, cart15, cart16];
     
@@ -110,7 +112,10 @@ const PokemonCart = ({pokemon, childToParent, volumeState}) => {
 
             <div
                 className='wrapper__left clickable'
-                onClick={() => previousCart()}
+                onClick={() => {
+                    previousCart();
+                    volumeState[1] ? playArrow() : console.log("muted");
+                }}
                 onMouseEnter={() => hoverLeftArrow(true)}
                 onMouseLeave={() => hoverLeftArrow(false)}
             >
@@ -119,7 +124,10 @@ const PokemonCart = ({pokemon, childToParent, volumeState}) => {
             </div>
             <div
                 className='wrapper__right clickable'
-                onClick={() => nextCart()}
+                onClick={() => {
+                    nextCart();
+                    volumeState[1] ? playArrow() : console.log("muted");
+                }}
                 onMouseEnter={() => hoverRightArrow(true)}
                 onMouseLeave={() => hoverRightArrow(false)}
             >

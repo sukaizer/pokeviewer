@@ -3,9 +3,13 @@ import createPersistedState from "use-persisted-state";
 import "./App.css";
 import search from "./assets/icons/search.svg";
 import volumeOn from "./assets/icons/volumeOn.svg";
+import volumeOnSFX from './assets/sounds/volumeOn.mp3';
 import volumeOff from "./assets/icons/volumeOff.svg";
+import volumeOffSFX from './assets/sounds/volumeOff.mp3';
 import PokemonCart from "./components/pokemonCart/PokemonCart";
 import Cursor from "./components/cursor/Cursor";
+import useSound from 'use-sound';
+
 
 import Pokedex from "pokedex-promise-v2"; //with pokedex-promise-v2
 const P = new Pokedex();
@@ -16,6 +20,8 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useSearchState("Pikachu");
   const [pokemonList, setPokemonList] = useState([]);
   const err = useRef();
+  const [playVolumeOn] = useSound(volumeOnSFX, {volume: 0.2});
+  const [playVolumeOff] = useSound(volumeOffSFX, {volume: 0.5});
 
   const searchPokemon = async (name) => {
     P.getPokemonByName(name.toLowerCase().replace(/\s/g, "")) // with Promise
@@ -106,7 +112,10 @@ const App = () => {
         className="volume clickable"
         src={volumeState[0]}
         alt="volumeOff"
-        onClick={() => changeVolume()}
+        onClick={() => {
+          changeVolume();
+          volumeState[1] ? playVolumeOff() : playVolumeOn();
+        }}
       />
       <div className="app">
         <div className="container">
