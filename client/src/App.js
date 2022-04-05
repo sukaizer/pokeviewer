@@ -74,7 +74,7 @@ const App = () => {
     const array = pokemonList.slice();
     const index = pokemonList.indexOf(pokemon);
     console.log(index);
-    isElementIn(pokemon, array)
+    isElementIn(pokemon.id, array)
       ? array.splice(index, 1)
       : console.log("Error : pokemon not in list");
     setPokemonList(array);

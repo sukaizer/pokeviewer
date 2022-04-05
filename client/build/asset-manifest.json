@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cf17eb6a.css",
+    "main.js": "/static/js/main.09ca96a1.js",
+    "static/js/845.4fbf7743.chunk.js": "/static/js/845.4fbf7743.chunk.js",
+    "static/media/Pokemon Solid.ttf": "/static/media/Pokemon Solid.5d60be1f7ff5fcc21fc1.ttf",
+    "static/media/Minecraft.ttf": "/static/media/Minecraft.81f6c7f882fcc2dee106.ttf",
+    "static/media/cart8.png": "/static/media/cart8.d4c46468a840461094d7.png",
+    "static/media/cart2.png": "/static/media/cart2.b6efa3f3aa9acbc56a8b.png",
+    "static/media/cart3.png": "/static/media/cart3.a5f4936dfe48895d308a.png",
+    "static/media/cart1.png": "/static/media/cart1.224569fb51bfb7ad3b51.png",
+    "static/media/cart5.png": "/static/media/cart5.83bfe9c4825fb8cdafe0.png",
+    "static/media/heart.mp3": "/static/media/heart.d67c183140510050992c.mp3",
+    "static/media/bin.mp3": "/static/media/bin.1ac47d3f0d2ffe1b9b2f.mp3",
+    "static/media/volumeOn.mp3": "/static/media/volumeOn.6dbd964b0ab556611f5a.mp3",
+    "static/media/arrow.mp3": "/static/media/arrow.ed8662ffac11c7bde48e.mp3",
+    "static/media/volumeOff.mp3": "/static/media/volumeOff.c93b4bf7e2c96ede6233.mp3",
+    "static/media/bin2.svg": "/static/media/bin2.287c8a7aa536dcb74dc8f53d8c2fa211.svg",
+    "static/media/bin1.svg": "/static/media/bin1.aa4d54c0b0eabe7eccbed6018a289bcc.svg",
+    "index.html": "/index.html",
+    "static/media/volumeOn.svg": "/static/media/volumeOn.ecb81ea38ee1c4671607a65e4b31bdc4.svg",
+    "static/media/volumeOff.svg": "/static/media/volumeOff.9d16ad3d66ff0253ab266e772bbdb307.svg",
+    "static/media/search.svg": "/static/media/search.e83cf7f1b38cb92f57870c76e1b2d64d.svg",
+    "main.cf17eb6a.css.map": "/static/css/main.cf17eb6a.css.map",
+    "main.09ca96a1.js.map": "/static/js/main.09ca96a1.js.map",
+    "845.4fbf7743.chunk.js.map": "/static/js/845.4fbf7743.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf17eb6a.css",
+    "static/js/main.09ca96a1.js"
+  ]
+}
